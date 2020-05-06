@@ -144,7 +144,7 @@ def info(cluster, detail):
 
 
 # Create a cluster for a specified file
-def create(cluster):
+def create(cluster, friendly_name="Untitled"):
 
     # Read in the spec file and conver to dict
     cluster_spec = file_to_dict(cluster)
@@ -314,6 +314,13 @@ if __name__ == "__main__":
             if not cluster.endswith("py"):
                 # Create a cluster
                 if cluster.endswith("json"):
+                    # if a 3rd arg was passed make that the deployment name
+                    if len(sys.argv) == 3:
+                        friendly_name = sys.argv[2]
+                        create(cluster, friendly_name)
+                        break
+                    else:
+                        create(cluster)
                     create(cluster)
                 # Get info on a cluster
                 elif cluster.endswith("info"):
