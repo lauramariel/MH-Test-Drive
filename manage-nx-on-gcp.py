@@ -321,7 +321,6 @@ if __name__ == "__main__":
                         break
                     else:
                         create(cluster)
-                    create(cluster)
                 # Get info on a cluster
                 elif cluster.endswith("info"):
                     info(cluster, "long")
